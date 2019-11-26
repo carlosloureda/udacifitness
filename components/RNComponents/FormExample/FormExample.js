@@ -63,7 +63,7 @@ export default class FormExample extends Component {
           <TextInput
             value={input}
             style={styles.input}
-            onChange={this.handlerTextChange}
+            onChangeText={this.handlerTextChange}
           />
         )}
       </KeyboardAvoidingView>
