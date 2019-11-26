@@ -4,6 +4,7 @@ import AddEntry from "./components/AddEntry";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
+import History from "./components/History";
 
 import ScrollViewExample from "./components/RNComponents/ScrollViewExample/ScrollViewExample";
 import FormExample from "./components/RNComponents/FormExample/FormExample";
@@ -16,8 +17,8 @@ export default function App() {
   if (SHOW_UDACIFITNESS) {
     return (
       <Provider store={createStore(reducer)}>
-        <View>
-          <AddEntry />
+        <View style={{ flex: 1 }}>
+          <History />
         </View>
       </Provider>
     );
