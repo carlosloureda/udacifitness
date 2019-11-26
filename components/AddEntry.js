@@ -15,7 +15,7 @@ import TextButton from "./TextButton";
 import { submitEnty, removeEntry } from "../utils/api.js";
 import { connect } from "react-redux";
 import { addEntry } from "../actions";
-import { getDailyeReminderValue } from "../utils/helpers";
+import { getDailyReminderValue } from "../utils/helpers";
 import { purple, white } from "../utils/colors";
 
 const SubmitBtn = ({ onPress }) => (
@@ -85,7 +85,7 @@ class AddEntry extends Component {
     //  Update Redux
     this.props.dispatch(
       addEntry({
-        [key]: getDailyeReminderValue()
+        [key]: getDailyReminderValue()
       })
     );
 
