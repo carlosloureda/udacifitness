@@ -8,7 +8,7 @@ import FormExample from "./components/RNComponents/FormExample/FormExample";
 // This constant is used because when false I want to show some other examples
 //  shown on the course like "React Native Components" or "Native Features" that
 // aren't used on this appp
-const SHOW_UDACIFITNESS = false;
+const SHOW_UDACIFITNESS = true;
 export default function App() {
   if (SHOW_UDACIFITNESS) {
     return (
@@ -19,8 +19,8 @@ export default function App() {
     );
   } else {
     return (
-      <FormExample />
       // <ScrollViewExample />
+      <FormExample />
     );
   }
 }
