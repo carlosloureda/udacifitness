@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ScrollView,
+  FlatList
+} from "react-native";
 import getReviews from "./reviews";
 
 const styles = StyleSheet.create({
@@ -29,15 +36,15 @@ const Review = ({ name, text, avatar }) => {
 };
 
 export default class ScrollViewExample extends Component {
+  renderItem = ({ item }) => {
+    return <Review {...item} />;
+  };
   render() {
     const reviews = getReviews();
     return (
-      <ScrollView styles={styles.container}>
-        {reviews.map(({ name, text, avatar }) => (
-          <Review key={name} name={name} text={text} avatar={avatar} />
-        ))}
-        {/* <Text>Hello</Text> */}
-      </ScrollView>
+      <View styles={styles.container}>
+        <FlatList data={reviews} renderItem={this.renderItem} />
+      </View>
     );
   }
 }
