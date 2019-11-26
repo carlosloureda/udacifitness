@@ -1,6 +1,9 @@
 import React from "react";
 import { View } from "react-native";
 import AddEntry from "./components/AddEntry";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import reducer from "./reducers";
 
 import ScrollViewExample from "./components/RNComponents/ScrollViewExample/ScrollViewExample";
 import FormExample from "./components/RNComponents/FormExample/FormExample";
@@ -12,10 +15,11 @@ const SHOW_UDACIFITNESS = true;
 export default function App() {
   if (SHOW_UDACIFITNESS) {
     return (
-      <View>
-        <AddEntry />
-        {/* Uncomment below code and comment */}
-      </View>
+      <Provider store={createStore(reducer)}>
+        <View>
+          <AddEntry />
+        </View>
+      </Provider>
     );
   } else {
     return (
