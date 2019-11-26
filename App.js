@@ -16,7 +16,7 @@ export default function App() {
   if (SHOW_UDACIFITNESS) {
     return (
       <Provider store={createStore(reducer)}>
-        <View>
+        <View style={{ flex: 1 }}>
           <AddEntry />
         </View>
       </Provider>
