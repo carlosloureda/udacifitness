@@ -5,6 +5,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
 import History from "./components/History";
+import Live from "./components/Live";
 import { purple, white } from "./utils/colors";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import ScrollViewExample from "./components/RNComponents/ScrollViewExample/ScrollViewExample";
@@ -15,7 +16,6 @@ import {
   createBottomTabNavigator,
   createMaterialTopTabNavigator
 } from "react-navigation-tabs";
-
 import Constants from "expo-constants";
 import EntryDetail from "./components/EntryDetail";
 
@@ -35,11 +35,32 @@ const _TabNavigator =
 const TabNavigator = _TabNavigator(
   {
     History: {
-      screen: History
+      screen: History,
+      navigationOptions: {
+        tabBarLabel: "History",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="ios-bookmarks" size={30} color={tintColor} />
+        )
+      }
     },
 
     AddEntry: {
-      screen: AddEntry
+      screen: AddEntry,
+      navigationOptions: {
+        tabBarLabel: "Add Entry",
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome name="plus-square" size={30} color={tintColor} />
+        )
+      }
+    },
+    Live: {
+      screen: Live,
+      navigationOptions: {
+        tabBarLabel: "Live",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="ios-speedometer" size={30} color={tintColor} />
+        )
+      }
     }
   },
   {
