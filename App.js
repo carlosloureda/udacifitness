@@ -13,13 +13,14 @@ import ScrollViewExample from "./components/RNComponents/ScrollViewExample/Scrol
 import FormExample from "./components/RNComponents/FormExample/FormExample";
 
 import { createAppContainer } from "react-navigation";
-// import { createStackNavigator } from 'react-navigation-stack'
+import { createStackNavigator } from "react-navigation-stack";
 import {
   createBottomTabNavigator,
   createMaterialTopTabNavigator
 } from "react-navigation-tabs";
 
 import Constants from "expo-constants";
+import EntryDetail from "./components/EntryDetail";
 
 function UdaciStatusBar({ backgroundColor, ...props }) {
   return (
@@ -65,8 +66,25 @@ const TabNavigator = _TabNavigator(
   }
 );
 
-const Navigation = createAppContainer(TabNavigator); //
+const MainNavigation = createStackNavigator({
+  Home: {
+    screen: TabNavigator,
+    navigationOptions: {
+      header: null
+    }
+  },
+  EntryDetail: {
+    screen: EntryDetail,
+    navigationOptions: ({ navigation }) => ({
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple
+      }
+    })
+  }
+});
 
+const Navigation = createAppContainer(MainNavigation);
 // This constant is used because when false I want to show some other examples
 //  shown on the course like "React Native Components" or "Native Features" that
 // aren't used on this appp

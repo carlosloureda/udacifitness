@@ -12,7 +12,7 @@ import UdaciSteppers from "./UdaciSteppers";
 import DateHeader from "./DateHeader";
 import { Ionicons } from "@expo/vector-icons";
 import TextButton from "./TextButton";
-import { submitEnty, removeEntry } from "../utils/api.js";
+import { submitEntry, removeEntry } from "../utils/api.js";
 import { connect } from "react-redux";
 import { addEntry } from "../actions";
 import { getDailyReminderValue } from "../utils/helpers";
@@ -78,6 +78,11 @@ class AddEntry extends Component {
       sleep: 0,
       eat: 0
     });
+    // Navigate to home
+
+    submitEntry({ key, entry });
+
+    // Clear local notification
   };
   reset = () => {
     const key = timeToString();
