@@ -12,11 +12,12 @@ import UdaciSteppers from "./UdaciSteppers";
 import DateHeader from "./DateHeader";
 import { Ionicons } from "@expo/vector-icons";
 import TextButton from "./TextButton";
-import { submitEnty, removeEntry } from "../utils/api.js";
+import { submitEntry, removeEntry } from "../utils/api.js";
 import { connect } from "react-redux";
 import { addEntry } from "../actions";
 import { getDailyReminderValue } from "../utils/helpers";
 import { purple, white } from "../utils/colors";
+import { NavigationActions } from "react-navigation";
 
 const SubmitBtn = ({ onPress }) => (
   <TouchableOpacity
@@ -78,6 +79,12 @@ class AddEntry extends Component {
       sleep: 0,
       eat: 0
     });
+    this.toHome();
+    // Navigate to home
+
+    submitEntry({ key, entry });
+
+    // Clear local notification
   };
   reset = () => {
     const key = timeToString();
@@ -89,8 +96,13 @@ class AddEntry extends Component {
       })
     );
 
-    //  Route to Home
+    this.toHome();
+    
     removeEntry(key);
+  };
+
+  toHome = () => {
+    this.props.navigation.dispatch(NavigationActions.back({ key: "AddEntry" }));
   };
 
   render() {
