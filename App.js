@@ -5,13 +5,10 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
 import History from "./components/History";
-
 import { purple, white } from "./utils/colors";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
-
 import ScrollViewExample from "./components/RNComponents/ScrollViewExample/ScrollViewExample";
 import FormExample from "./components/RNComponents/FormExample/FormExample";
-
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import {
