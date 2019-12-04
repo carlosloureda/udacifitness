@@ -11,7 +11,10 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "https://tylermcginnis.com/udacifitness-512.png",
+    "notification": {
+      "icon": "https://tylermcginnis.com/udacifitness-45.png
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -22,9 +25,6 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    }
+    ]
   }
 }

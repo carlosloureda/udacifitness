@@ -5,6 +5,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
 import History from "./components/History";
+import Live from "./components/Live";
 import { purple, white } from "./utils/colors";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import ScrollViewExample from "./components/RNComponents/ScrollViewExample/ScrollViewExample";
@@ -15,9 +16,9 @@ import {
   createBottomTabNavigator,
   createMaterialTopTabNavigator
 } from "react-navigation-tabs";
-
 import Constants from "expo-constants";
 import EntryDetail from "./components/EntryDetail";
+import { setLocalNotification } from "./utils/helpers";
 
 function UdaciStatusBar({ backgroundColor, ...props }) {
   return (
@@ -35,11 +36,32 @@ const _TabNavigator =
 const TabNavigator = _TabNavigator(
   {
     History: {
-      screen: History
+      screen: History,
+      navigationOptions: {
+        tabBarLabel: "History",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="ios-bookmarks" size={30} color={tintColor} />
+        )
+      }
     },
 
     AddEntry: {
-      screen: AddEntry
+      screen: AddEntry,
+      navigationOptions: {
+        tabBarLabel: "Add Entry",
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome name="plus-square" size={30} color={tintColor} />
+        )
+      }
+    },
+    Live: {
+      screen: Live,
+      navigationOptions: {
+        tabBarLabel: "Live",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="ios-speedometer" size={30} color={tintColor} />
+        )
+      }
     }
   },
   {
@@ -87,22 +109,25 @@ const Navigation = createAppContainer(MainNavigation);
 // aren't used on this appp
 
 const SHOW_UDACIFITNESS = true;
-function App() {
-  if (SHOW_UDACIFITNESS) {
-    return (
-      <Provider store={createStore(reducer)}>
-        <View style={{ flex: 1 }}>
-          <UdaciStatusBar backgroundColor={purple} barStyle="light-content" />
-          <Navigation />
-        </View>
-      </Provider>
-    );
-  } else {
-    return (
-      // <ScrollViewExample />
-      <FormExample />
-    );
+export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+  render() {
+    if (SHOW_UDACIFITNESS) {
+      return (
+        <Provider store={createStore(reducer)}>
+          <View style={{ flex: 1 }}>
+            <UdaciStatusBar backgroundColor={purple} barStyle="light-content" />
+            <Navigation />
+          </View>
+        </Provider>
+      );
+    } else {
+      return (
+        // <ScrollViewExample />
+        <FormExample />
+      );
+    }
   }
 }
-
-export default App;
