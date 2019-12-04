@@ -17,6 +17,7 @@ import { connect } from "react-redux";
 import { addEntry } from "../actions";
 import { getDailyReminderValue } from "../utils/helpers";
 import { purple, white } from "../utils/colors";
+import { NavigationActions } from "react-navigation";
 
 const SubmitBtn = ({ onPress }) => (
   <TouchableOpacity
@@ -78,6 +79,7 @@ class AddEntry extends Component {
       sleep: 0,
       eat: 0
     });
+    this.toHome();
     // Navigate to home
 
     submitEntry({ key, entry });
@@ -93,9 +95,13 @@ class AddEntry extends Component {
         [key]: getDailyReminderValue()
       })
     );
-
+    this.toHome();
     //  Route to Home
     removeEntry(key);
+  };
+
+  toHome = () => {
+    this.props.navigation.dispatch(NavigationActions.back({ key: "AddEntry" }));
   };
 
   render() {
