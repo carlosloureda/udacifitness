@@ -95,8 +95,9 @@ class AddEntry extends Component {
         [key]: getDailyReminderValue()
       })
     );
+
     this.toHome();
-    //  Route to Home
+    
     removeEntry(key);
   };
 
