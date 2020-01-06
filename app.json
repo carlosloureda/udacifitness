@@ -4,16 +4,12 @@
     "slug": "udacifitness",
     "privacy": "public",
     "sdkVersion": "35.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "https://tylermcginnis.com/udacifitness-512.png",
     "notification": {
-      "icon": "https://tylermcginnis.com/udacifitness-45.png
+      "icon": "https://tylermcginnis.com/udacifitness-45.png"
     },
     "splash": {
       "image": "./assets/splash.png",
@@ -23,8 +19,6 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"]
   }
 }
